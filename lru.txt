@@ -1,0 +1,33 @@
+import java.util.LinkedList; import java.util.Queue; import java.util.Scanner; public class LRUPageReplacement {
+public static void main(String[] args) {
+Scanner scanner = new Scanner(System.in);
+System.out.print("Enter the number of frames: "); int frames = scanner.nextInt();
+System.out.print("Enter the length of the reference string: "); int refLen = scanner.nextInt();
+int[] referenceString = new int[refLen];
+System.out.println("Enter the reference string (space-separated integers):"); for (int i = 0; i < refLen; i++) { referenceString[i] = scanner.nextInt(); }
+simulateLRU(frames, referenceString);
+scanner.close();
+} public static void simulateLRU(int frames, int[] referenceString) {
+LinkedList<Integer> memory = new LinkedList<>(); int pageFaults = 0; int pageHits = 0;
+System.out.println("\n--- LRU Simulation ---");
+System.out.println("Frames: " + frames); System.out.print("Reference String: "); for (int page : referenceString) { System.out.print(page + " ");
+}
+System.out.println("\n");
+for (int page : referenceString) {
+System.out.print("Accessing page " + page + ": "); if (memory.contains(page)) {
+memory.remove(Integer.valueOf(page)); memory.addLast(page); pageHits++;
+System.out.println("Hit. Memory: " + memory); } else {
+pageFaults++;
+if (memory.size() < frames) {
+memory.addLast(page);
+} else {
+int removedPage = memory.removeFirst();
+memory.addLast(page);
+System.out.println("Fault (replaced " + removedPage + "). Memory: " + memory);
+}
+}
+}
+System.out.println("\n--- Simulation Results ---");
+System.out.println("Total Page Faults: " + pageFaults);
+System.out.println("Total Page Hits: " + pageHits); }
+}

@@ -1,0 +1,19 @@
+public class MathOperation
+{
+//ADD
+public static double add(double a, double b , double c)
+{ return a+b+c;
+}
+//SUB
+public static double subtract(double a, double b , double c)
+{ return a-b-c;
+}
+//MUL
+public static double mul(double a, double b , double c)
+{ return a*b*c;
+}
+//DIV
+public static double div(double a, double b , double c)
+{ return a/b/c;
+}
+}
