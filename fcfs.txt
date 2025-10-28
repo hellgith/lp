@@ -33,5 +33,6 @@ public class FCFS
   System.out.println("\n ");
   System.out.println("\nAverage Waiting Time :" +avg_wait);
   System.out.println("\nAverage Turn Around Time :"+avg_TT+"\n");
-
+  }
 }
+
